@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finder</title>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+*{
+    font-family: 'Poppins', sans-serif; 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+
+}
+
+:root{
+    --body-color: #E4E9F7;
+    --sidebar-color: #FFF;
+    --primary-color: #695CFE;
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #707070;
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+}
+body{
+    height: 100vh;
+    background: var(--body-color);
+    transition: var(--tran-05);
+}
+
+body.dark{
+    --body-color: #18191A;
+    --sidebar-color: #242526;
+    --primary-color: #3A3B3C;
+    --primary-color-light: #3A3B3C;
+    --toggle-color: #FFF;
+    --text-color: #CCC;
+}
+
+/* ==== Sidebar ====*/
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    padding: 10px 14px;
+    background: var(--sidebar-color);
+    transition: var(--tran-05);
+    z-index: 100;
+}
+
+.sidebar.close{
+    width: 88px;
+}
+
+/* ==== reusable CS ====*/
+.sidebar .text{
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color);
+    transition: var(--tran-03);
+    white-space: nowrap;
+    opacity: 1;
+}
+.sidebar.close .text{
+    opacity: 0;
+}
+
+.sidebar .image{
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar li{
+    height: 50px;
+    background: navy;
+    margin-top: 10px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar li .icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    min-width: 60px;
+}
+.sidebar li .icon,
+.sidebar li .text{
+    color: var(--text-color);
+    transition: var(--tran-02);
+}
+.sidebar header{
+    position: relative;
+}
+.sidebar .image-text img{
+    width: 40px;
+    border-radius: 6px;
+}
+.sidebar header .image-text{
+    display: flex;
+    align-items: center;
+}
+header .image-text .header-text{
+    display: flex;
+    flex-direction: column;
+}
+
+.header-text .name{
+    font-weight: 600;
+    font-size: 1.3em;
+}
+
+.header-text .profession{
+    margin-top: -1px;
+}
+
+.sidebar header .toggle{
+    position: absolute;
+    top: 50%;
+    right: -25px;
+    transform: translateY(-50%) rotate(180deg);
+    height: 25px;
+    width: 25px;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--sidebar-color);
+    font-size: 22px;
+    transition: var(--tran-03);
+}
+
+.sidebar.close  header .toggle{
+    transform: translateY(-50%);
+}
+
+body.dark .sidebar header .toggle{
+    color: var(--text-color);
+}
+
+.sidebar .menu{
+    margin-top: 35px;
+}
+.sidebar .search-box{
+    background: var(--primary-color-light);
+    border-radius: 6px;
+    transition: var(--tran-05);
+}
+
+.search-box input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    background: var(--primary-color-light);
+    transition: var(--tran-05);
+}
+
+.sidebar li a{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: var(--tran-04);
+}
+
+.sidebar li a:hover{
+    background: var(--primary-color);
+}
+
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text{
+    color: var(--sidebar-color);
+}
+.body .dark .sidebar li a:hover .icon,
+.body .dark .sidebar li a:hover .text{
+    color: var(--text-color);
+}.sidebar .menu-bar{
+    height: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-bar .mode{
+    position: relative;
+    border-radius: 6px;
+    background: var(--primary-color-light);
+}
+
+.menu-bar .mode .moon-sun{
+    height: 50px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+
+}
+.menu-bar .mode i{
+    position: absolute;
+    transition: var(--tran-03);
+}
+ 
+.menu-bar .mode i.sun{
+    opacity: 0;
+}
+
+body.dark .menu-bar .mode i.sun{
+    opacity: 1;
+}
+
+body.dark .menu-bar .mode i.moon{
+    opacity: 0;
+}
+
+.menu-bar .mode .toggle-switch{
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;   
+    min-width: 60px;
+    cursor: pointer;
+    border-radius: 6px;
+    background: var(--primary-color-light);
+    transition: var(--tran-05);
+}
+.toggle-switch .switch{
+    position: relative;
+    height: 22px;
+    width: 44px;
+    border-radius: 25px;
+    background: var(--toggle-color);
+}
+
+.switch::before{
+    content:'';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    background: var(--sidebar-color);
+    transition: var(--tran-03);
+}
+
+body.dark .switch::before{
+    left: 24px;
+} 
+
+.sidebar.close ~ .home{
+    left: 88px;
+    width: calc(100% - 88px);
+}
+
+    </style>
+</head>
+<body>
+    <div>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="/Images/a.jpg" alt="logo">
+                </span>
+                <div class="text header-text">
+                     <span class="name">HouseRades</span>
+                     <span class="profession">Find Vacant properties</span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+    <div class="menu-bar">
+        <div class="menu">
+            <li class="search-box">
+                <i class='bx bx-search icon'></i>
+                    <input type="search" id="place-search" placeholder="Search...">
+            </li>
+            <ul class="menu-links"> 
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-home-alt icon'></i>
+                        <span class="text nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-rotate-left icon'></i>
+                        <span class="text nav-text">Recents</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-bell icon'></i>
+                        <span class="text nav-text">Notifications</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-bar-chart-alt icon'></i>
+                        <span class="text nav-text">Analytics</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="#">
+                        <i class='bx bx-chat icon'></i>
+                        <span class="text nav-text">Chat</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="bottom content">
+        <li class="mode">
+            <div class="moon-sun">
+                <i class='bx bx-moon icon moon'></i>
+                <i class='bx bx-sun icon sun'></i>
+            </div>
+            <span class="mode-text text">Dark Mode</span>
+
+            <div class="toggle-switch">
+                <span class="switch"></span>
+            </div>
+        </li>
+        </div>
+    </div>
+ </nav>
+</div>
+<div style="padding-left: 90px;">
+    <div style="color: navy;">
+        <div style="background: #FAF3BA;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                ">
+    <div id="map" style="height: 100vh; width: 100%;
+                          margin: 0 auto;
+                          box-shadow:  0.25em 0.25em 0.75em rgba(0,0,0,.25),
+                           0.125em 0.125em 0.25em rgba(0,0,0,.15);;
+    "></div>
+  </div>
+    </div>
+</div>
+<div>
+</div>
+<script>
+    const body = document.querySelector("body"),
+      sidebar =body.querySelector(".sidebar"),
+      toggle =body.querySelector(".toggle"),
+      searchBtn =body.querySelector(".search-box"),
+      modeSwitch =body.querySelector(".toggle-switch"),
+      modeText =body.querySelector(".mode-text");
+      
+      toggle.addEventListener("click", () =>{
+        sidebar.classList.toggle("close");
+      });
+      searchBtn.addEventListener("click", () =>{
+        sidebar.classList.remove("close");
+      });
+
+
+      modeSwitch.addEventListener("click", () =>{
+        body.classList.toggle("dark");
+
+        if(body.classList.contains("dark")){
+            modeText.innerText = "Light Mode"
+        }else{
+            modeText.innerText = "Dark Mode"
+        }
+    });
+
+    const showDistance = document.querySelector(".Show-distance")
+    let map;
+    let marker; 
+    let fixedLocation = { lat: -0.6922197321484374, lng: 34.783828631043434 };
+
+
+function initMap() {s
+          const customMapStyle = [
+    {
+      featureType: "all",
+      stylers: [
+        { visibility: "off" }
+      ],
+    },
+    {
+      featureType: "landscape",
+      stylers: [
+        { visibility: "on" },
+      ],
+    },
+  ];
+
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: -0.6922197321484374, lng: 34.783828631043434  },
+    zoom: 16,
+  });
+
+ 
+  map.addListener("click", function (event) {
+    placeMarker(event.latLng);
+  });
+}
+
+const placesService = new google.maps.places.PlacesService(map);
+
+const autocomplete  = new google.maps.places.Autocomplete(
+    document.getElementById("place-search")
+);
+autocomplete.addListener("place_changed", () => {
+    const place = autocomplete.getPlace();
+})
+
+function placeMarker(location) {
+  if (marker) {
+    marker.setMap(null);
+  }
+
+  marker = new google.maps.Marker({
+    position: location,
+    map: map,
+  });
+
+    if (confirm(`Selected Location:\nLatitude: ${location.lat().toFixed(6)}\nLongitude: ${location.lng().toFixed(6)}\nDo you want to continue?`)) {
+        // If the user confirms, you can perform additional actions here
+        // For example, you can calculate the distance to the fixed location and display it
+        const distance = calculateDistance(location, fixedLocation);
+        alert(`Distance from School: ${distance.toFixed(2)} * km`);
+    }
+
+  showDistance.textContent += `${distance}`
+}
+
+function calculateDistance(coord1, coord2) {
+  const earthRadius = 6371; // Earth's radius in kilometers
+
+  const lat1 = (Math.PI / 180) * coord1.lat();
+  const lat2 = (Math.PI / 180) * coord2.lat;
+  const lon1 = (Math.PI / 180) * coord1.lng();
+  const lon2 = (Math.PI / 180) * coord2.lng;
+
+  const dlat = lat2 - lat1;
+  const dlon = lon2 - lon1;
+
+  const a =
+    Math.sin(dlat / 2) * Math.sin(dlat / 2) +
+    Math.cos(lat1) * Math.cos(lat2) * Math.sin(dlon / 2) * Math.sin(dlon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+  return earthRadius * c;
+}
+</script>
+<script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkk2spoUw31usKHtVBklFf7Coc1VG92uY&libraries=places&callback=initMap"
+      async
+      defer
+    ></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<html>
+<body>
+<h1>Data Records</h1>
+<ul>
+  <% data.forEach(function(item) { %>
+    <li><%= item.tenantId %></li>
+    <li><%= item.firstName %></li>
+    <li><%= item.lastName %></li>
+    <li><%= item.email %></li>
+    <li><%= item.phone %></li>
+    <li><%= item.move_in_date %></li>
+  <% }); %>
+</ul>
+</body>
+</html>

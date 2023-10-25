@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landlord</title>
+    <script src="https://kit.fontawesome.com/af3eb4fe70.js" crossorigin="anonymous"></script>
+    <style>
+        *,*::after,*::before{
+    box-sizing: border-box;
+}
+body{
+    background-color: #FAF3BA;
+    font-family: sans-serif;
+    margin: 0;
+}
+header{
+    background: #D9D9D9;
+    padding: 10px 0;
+    margin-bottom: 50px;
+}
+img{
+    max-width: 100%;
+}
+.flex{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.user-credentials{
+    text-align: center;
+}
+.title
+{
+    letter-spacing: 10px;
+}
+.welcome-txt{
+    padding-bottom: 20px;
+
+}
+.container{
+    width: 80%;
+    margin: 0 auto;
+}
+.house-div{
+    display: inline-block;
+    max-width: 40%;
+    background: #D9D9D9;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow:  0.25em 0.25em 0.75em rgba(0,0,0,.25),
+                 0.125em 0.125em 0.25em rgba(0,0,0,.15);
+}
+
+.house-name{
+    text-align: center;
+}
+.btn-update,
+.btn-remove,
+.btn-book{
+    margin-top: 10px;
+    display: inline-block;
+    font-weight: bold;
+    padding: .25em .75em;
+    box-shadow: 0.25em 0.25em 0.75em rgba(0,0,0,.25);
+    border-radius: 5px;
+    background: #53D4F0;
+}
+.btn-remove{
+    margin-left: 100px;
+}
+.btn-remove:hover{
+    background: red;
+}
+.btn-remove:hover,
+.btn-update:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.addHouse-btn{
+    display: inline;
+    margin-left: 20px;
+}
+.addHouse-btn>img:hover{
+    transform: scale(1.1);
+}
+main{
+    position: relative;
+}
+.house-form{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400px;
+    background: #FAF3BA;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0.25em 0.25em 0.75em rgba(0,0,0,.25),
+                0.125em 0.125em 0.25em rgba(0,0,0,.15);
+}
+.house-form--show{
+    display: block;
+}
+input{
+    margin-bottom: 20px;
+    display: inline;
+    width: 100%;
+}
+    </style>
+</head>
+<body>
+    <header>
+
+        <div class="container">
+            <div class="flex">
+                <div class="logo">
+                    <img src="images/Logo.png" alt="Logo">
+                </div>
+                <h1 class="title">HOUSRADES</h1>
+                <div class="user-credentials">
+                    <a href="/profile">Profile</a>
+                    <a href="/logout">Log out</a>
+                </div>
+            </div>
+        </div>
+        
+    </header>
+
+    <h2 class="welcome-txt container">Welcome Landlord</h2>
+
+
+    <div class="container">
+        <div class="addHouse-btn">
+            <img src="images/AddHouse-btn.png" alt="Add house-btn">
+        </div>
+    </div>
+
+
+    <div class="container">
+        <main>
+            <div class="house-grid">
+                <div class="house-div">
+                    <h2 class="house-name">WestGate</h2>
+                    <div class="house-img">
+                        <img src="images/Rectangle 2.png" alt="">
+                    </div>
+                    <h3 class="house-description">Description</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item Show-distance">Distance from School is </li>
+                        <li class="nav-item">Type of house - Bedsitter and one bedroom</li>
+                        <li class="nav-item">Type of house - Bedsitter and one bedroom</li>
+                        <li class="nav-item">Total rooms - 55</li>
+                        <li class="nav-item">Available rooms - 20</li>
+                        <li class="nav-item">Prive per room - 6,000</li>
+                        <li class="nav-item">Prive per room - 6,000</li>
+                        <li class="nav-item">Gate Restrictions - open 24/7/364</li>
+                    </ul>
+                    <div class="btn-update">Update</div>
+                    <div class="btn-remove">Remove</div>
+                </div>
+            </div>
+            <form action="house" method="post" class="house-form">
+                <h3 class="form-title">Give description for your house:</h3>
+                <div>
+                    <label for="searchIcon">Location from the map</label>
+                    <button id="searchIcon-btn"><i class="fa-sharp fa-solid fa-magnifying-glass fa-rotate-90"></i></button>
+                </div>
+                <div>
+                    <label for="totalRooms">TotalRooms</label>
+                    <input type="text" name="totalRooms" id="totalRooms">
+                </div>
+                <div>
+                    <label for="pricePerRoom">Price Per Room</label>
+                    <input type="text" name="price" id="pricePerRoom">
+                </div>
+                <div>
+                    <label for="houseType">House Type</label>
+                    <input type="text" name="houseType" id="houseType">
+                </div>
+                <div>
+                    <label for="gateRestrictions">Gate restrictions</label>
+                    <input type="text" id="gateRestrictions" name="restrictions">
+                </div>
+                <div>
+                    <label for="landlordId">Landlord Id</label>
+                    <input type="text" name="landlordId" id="landlordId">
+                    <button type="submit">submit</button>
+                </div>
+            </form>
+        </main>
+    </div>
+</body>
+
+<script>
+    const ratingBtn = document.querySelector(".rate-btn");
+const promptRatingDiv = document.querySelector(".promptRate-div");
+const houseDiv = document.querySelector(".house-div");
+const ratingsDiv = document.querySelector(".ratings");
+const addHouseBtn = document.querySelector(".addHouse-btn")
+const houseForm = document.querySelector(".house-form")
+const searchIconBtn = document.querySelector(".searchIcon-btn")
+
+
+const promptRateInputName = document.querySelector(".promptRate-input-name");
+const promptRateInputNumber = document.querySelector(".promptRate-input-number");
+const promptRateInputMessage = document.querySelector(".promptRate-input-message");
+
+
+let ratingUserName = null
+let ratingMessage = null
+let ratingNumbers = null
+
+
+addHouseBtn.addEventListener("click",()=>{
+    houseForm.classList.toggle("house-form--show")
+})
+
+ratingBtn.addEventListener("click", ()=>{
+    
+    promptRatingDiv.classList.toggle("show-promptRate-div");
+    houseDiv.style.opacity = 1
+    if(promptRateInputMessage.value){
+        grabReveiews()
+    }
+    
+})
+searchIconBtn.addEventListener("click",()=>{
+    houseForm.preventDefault;
+})
+
+
+function grabReveiews(){
+    ratingNumbers = promptRateInputNumber.value;
+    ratingUserName = promptRateInputName.value;
+    ratingMessage = promptRateInputMessage.value;
+
+    let ratingDiv = document.createElement("div") 
+    ratingDiv.className = "rating-div"
+    ratingDiv.innerHTML = `
+    <p class="user-name">${promptRateInputName.value}</p>
+    <p class="review-text">${promptRateInputMessage.value}</p>
+    `
+    console.log(ratingDiv)
+
+    ratingsDiv.appendChild(ratingDiv);
+
+    promptRateInputNumber.value = ""
+    promptRateInputName.value = ""
+    promptRateInputMessage.value = ""
+
+}
+</script>
+
+</html>

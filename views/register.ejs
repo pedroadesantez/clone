@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        *{
+    Margin: 0;
+    Padding: 0;
+  }
+  
+  Body{
+    Height: 100vh;
+    Display: flex;
+    Align-items: center;
+    Justify-content: space-around;
+    Background-color: aliceblue;
+  }
+  
+  .main-wrapper{
+    Width: 400px;
+    Display: flex;
+    Align-items: center;
+    Justify-content: space-around;
+    Flex-direction: column;
+    Background-color: rgba(255, 255, 255, 0.356);
+    Box-shadow: 0px 0px 30px 0px rgba(82, 82, 82, 0.247);
+    Padding: 2rem;
+    Gap: 3rem;
+    Border-radius: .4rem;
+    Position: relative;
+  }
+  Form{
+    Display: flex;
+    Align-items: center;
+    Justify-content: space-around;
+    Flex-direction: column;
+    Gap: 2rem;
+  }
+  Input{
+    Height: 2rem;
+    Width: 17rem;
+    Padding: 0.5rem;
+    Padding-left: 1rem;
+    Font-size: 1.2rem;
+    Border: none;
+    Border-radius: .4rem;
+    Font-family: ‘Rokkitt’, serif;
+    Box-shadow: 0px 0px 13px 0px hsla(0, 2%, 58%, 0.438);
+  }
+  Input:focus{
+    Outline: none;
+  }
+  
+  Button{
+    Font-size: 1.3rem;
+    Padding: 0.4rem 2rem;
+    Background-color: hsl(167, 92%, 23%);
+    Border: none;
+    Border-radius: .4rem;
+    Color: white;
+    Cursor: pointer;
+  }
+  #userType{
+    width: 100%;
+    padding: .5em;
+    margin-bottom: .5em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-wrapper">
+          <form action="/register" method="POST">
+            <h2>Register</h2>
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <input type="password" id="password" name="password" placeholder="password" required>
+            <select id="userType" name="userType">
+                <option value="tenant">Tenant</option>
+                <option value="landlord">Landlord</option>
+            </select>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>

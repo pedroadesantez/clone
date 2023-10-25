@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Houserades</title>
+    <style>
+ *{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #d4c6c6;
+    margin: 0;
+    padding: 0;
+        }
+#header{
+    width: 100%;
+    height: 100vh;
+    background-image: url(/Images/Nice.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.container{
+    padding: 10px 10%;      
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.logo{
+    font-size: 2.4em;
+    margin-top: .4em;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.logo span{
+    color: rgb(255, 98, 0);
+}
+
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+
+nav ul li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.3em;
+    position: relative;
+}
+
+nav ul li a::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: rgb(255, 98, 0);
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: .5s;
+}
+
+nav ul li a:hover::after{
+    width: 100%;
+}
+
+.headerText{
+    margin-top: 20%;
+    font-size: 1.5em;
+}
+.headerText h1{
+    font-size: 2.4em;
+    margin-top: 20px;
+}
+.headerText h1 span{
+    color: rgb(255, 98, 0);
+}
+
+ #about{
+    padding: 80px 0;
+    color: #ababab;
+    font-family: 'Times New Roman', Times, serif;
+    background: black;
+ }
+
+.subtitle{
+    font-variant: small-caps;
+    font-size: 2em;
+    font-weight: 600;
+    color: #fff;
+}
+
+#services{
+    padding: 30px 0;
+    background: #ababab;    
+}
+.services-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+    color: #fff;
+}
+.services-list p{
+    font-family: 'Times New Roman', Times, serif;
+}
+.services-list div{
+    background: #262626;
+    padding: 40px;
+    font-size: 13px;
+    font-weight: 300;
+    border-radius: 10px;
+    transition: transform .5s;
+}
+.services-list div i{
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+.services-list div h2{
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.services-list div a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 12px;
+    margin-top: 20px;
+    display: inline-block;
+}
+.services-list div:hover{
+    background: #ff004f;
+    transform: translateY(-10px);
+}
+
+#ourWork{
+    margin: 50px 0;
+    color: #fff;
+    background: black;
+}
+.work-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+.work{
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.work img{
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    transition: transform .5s;
+}
+.layer{
+    width: 100%;
+    height: 0;
+    background: linear-gradient(rgba(0,0,0,0.03), rgb(255, 98, 0));
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    font-size: 14px;
+    transition: height .5s;
+}
+.layer h3{
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.layer a{
+    margin-top: 20px;
+    color: rgb(255, 98, 0);
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 60px;
+    background: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+}
+.work:hover img{
+    transform: scale(1.1);
+}
+.work:hover .layer{
+    height: 100%;
+}
+.btn{
+    display: block;
+    margin: 50px auto;
+    width: fit-content;
+    border: 1px solid rgb(255, 98, 0);
+    padding: 14px 50px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #fff;
+    transition: background-color .5s;
+}
+.btn:hover{
+    background-color: rgb(255, 98, 0);
+}
+/* --------Contact--------- */
+#contact{
+    background-color: grey;
+}
+.contact-left{
+    flex-basis: 35%;
+}
+.contact-left p{
+    margin-top: 30px;
+}
+.copyright{
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+    background: #262626;
+    font-weight: 300;
+    margin-top: 20px;
+}
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <span class="logo">
+                    <span>House</span>Rades
+                    </span>
+                <ul id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="/login">Log In</a></li>
+                    <li><a href="/register">Sign Up</a></li>
+                    </div>
+                </ul>
+            </nav>
+            <div class="headerText">
+                <h1>Hi, Welcome to the <span>House Tracking </span><br> software solution</h1>
+            </div>
+        </div> 
+    </div>
+    <div id="about">
+        <div class="container">
+            <h1 class="subtitle">About</h1><br>
+            <br>Welcome to Houserades , your ultimate solution for streamlined vacancy management. Our app 
+                is designed to help you easily track and manage vacancy openings, making the finding process more efficient
+                than ever. With Houserades you can: <br> <br>
+                <ul>
+                <li>Create and organize vacancy listings with all essential details.</li>
+                <li>Monitor the status of each vacancy.</li>
+                <li>Collaborate with your landlord in real time ensuring seamless communication.</li>
+                <li>Stay updated with notification and reminders for key vacancy milestones.</li>
+            </ul> <br><br>
+                Take control of your home and make smarter decisions with Houserades.
+            </p>
+            <p>We are dedicated to helping you find the perfect home. Our platform connects house seekers with house owners, making house hunting easier and more efficient.</p>
+        </div>
+    </div>
+    
+    <div id="services">
+        <div class="container">
+            <h1 class="sub-title">Our Services</h1>
+            <div class="services-list">
+                <div>
+                    <h2>Seamless Communication</h2>
+                    <p>Our application enables communication between the tenant and the landlord to be seamless.</p>
+                    <a href="#">Learn more</a>
+                </div>
+                <div>
+                    <h2>Records</h2>
+                    <p>Our application keeps the records of payment and other information between the tenant and the landlord.</p>
+                    <a href="#">Learn more</a>
+                </div>
+                <div>
+                    <h2>Tracking</h2>
+                    <p>Our application tracks and monitors vacant houses and displays them on the platform for the users to views them upon request.</p>
+                    <a href="#">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="ourWork">
+        <div class="container">
+            <h1 class="sub-title">Our Work</h1>
+            <div class="work-list">
+                <div class="work">
+                    <img src="/Images/Tokyo.jpg" alt="">
+                    <div class="layer">
+                        <h3>Vacancy Tracking App</h3>
+                        <p>The app connects you to the vacant houses around the world.
+                            Download it from play store.</p>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="/Images/Paris.jpg" alt="">
+                    <div class="layer">
+                        <h3>Chat Platform</h3>
+                        <p>The app enables communication between the tenants and the landlord.                           Download it from play store.</p>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="/Images/Nyc.jpg" alt="">
+                    <div class="layer">
+                        <h3>Filtering</h3>
+                        <p>The app filters the infomation given and presents what was searched for by the customer.                            Download it from play store.</p>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="btn">See More</a>
+        </div>
+    </div>
+\
+    <div id="contact">
+        <div class="container">
+                <div class="contact-left">
+                    <h1 class="sub-title">Contact Us</h1>
+                    <p>Email : <a href="mailto:pedroadesantez@gmail.com">pedroadesantez@gmail.com</a></p>
+                    <p>Phone number : 0711111111</p>
+                    <p>WhatsApp : +254711111000</p>
+                </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright &copy; Houserades. A vacancy Tracking application.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <style>
+                * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-right: 1rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        main {
+            padding: 2rem;
+        }
+
+        .dashboard {
+            background-color: #fff;
+            width: 60%;
+            margin: 0 auto;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-profile form {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .user-profile input {
+            width: 100%;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .user-profile button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+
+        .user-profile button.btn-logout {
+            margin-top: 1rem;
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Vacancy Tracing</div>
+            <ul class="nav-links" style="display: flex;">
+                <li  style="list-style-type: none;"><a href="/home">Dashboard</a></li>
+                <li  style="list-style-type: none;"><a href="/data">View Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="dashboard">
+            <div class="user-profile">
+                <form action="/profile" method="post">
+                    <input type="text" name="tenantId" placeholder="TenantId" required>
+                    <input type="text" name="firstName" placeholder="FirstName" required>
+                    <input type="text" name="lastName" placeholder="LastName" required>
+                    <input type="text" name="email" placeholder="Email" required>
+                    <input type="text" name="phone" placeholder="Phone" required>
+                    <input type="text" name="move_in_date" placeholder="Move In Date" required>
+                    <button type="submit" class="btn-logout">Create Profile</button>
+                  </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Vacancy Tracing App</p>
+    </footer>
+</body>
+</html>

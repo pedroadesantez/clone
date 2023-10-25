@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Vacancy Tracing</div>
+            <ul class="nav-links">
+                <li><a href="/home">Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="dashboard">
+            <div class="user-profile">
+                <form action="/profile" method="post">
+                    <input type="text" name="tenantId" placeholder="TenantId" required>
+                    <input type="text" name="firstName" placeholder="FirstName" required>
+                    <input type="text" name="lastName" placeholder="LastName" required>
+                    <input type="text" name="email" placeholder="Email" required>
+                    <input type="text" name="phone" placeholder="Phone" required>
+                    <input type="text" name="move_in_date" placeholder="Move In Date" required>
+                    <button type="submit" class="btn-logout">Create Profile</button>
+                </form>
+            </div>
+        </section>
+    </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Vacancy Tracing App</p>
+    </footer>
+</body>
+</html>
